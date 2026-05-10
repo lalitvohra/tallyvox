@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_bg">#4f98a3</color>
+    <string name="app_name">TallyVox</string>
+    <string name="channel_desc">Persistent counter notification</string>
+    <string name="channel_name">TallyVox Counter</string>
+    <style name="Theme.TallyVox" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>

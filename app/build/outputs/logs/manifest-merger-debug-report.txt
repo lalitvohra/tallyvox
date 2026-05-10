@@ -1,0 +1,338 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:2:1-36:12
+MERGED from [androidx.activity:activity:1.9.1] /home/openclaw/.gradle/caches/transforms-4/92f60779d27bea3e3f32115cc6060221/transformed/jetified-activity-1.9.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.9.1] /home/openclaw/.gradle/caches/transforms-4/c561e55d4a9d1aa7f085cf9936f56068/transformed/jetified-activity-ktx-1.9.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/openclaw/.gradle/caches/transforms-4/3f15ce2397201b5ddd8b0a094b6b92e6/transformed/jetified-material3-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/3d5fd8cc7e541121e2f7418ff4bac181/transformed/jetified-material-ripple-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/7d324dabba4426f31e5dd6ec33952c8e/transformed/jetified-material-icons-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/05dfbed68a6ba8c164f5fba6e75eba49/transformed/jetified-material-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/f1341fa1fbedbdd8198fa1ede0a56ec4/transformed/jetified-animation-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/6ea3d5b1270d96e74c7206e18dd94f4d/transformed/jetified-animation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/c1bd4b7f2cd83dd23131487753aac3d5/transformed/jetified-foundation-layout-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/b2595a1de5edebdff3c671dc9e45aa52/transformed/jetified-foundation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/e90b16b9795f8bd52dbb87a4ee148ddb/transformed/jetified-ui-tooling-data-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/73591573397ba2a442e5a01721619dd1/transformed/jetified-ui-unit-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/5afd00cf4a78fd9adac4a00de7d646e1/transformed/jetified-ui-geometry-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/2f4674b64ca8a132d94fbfccac682b23/transformed/jetified-ui-util-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/e4180ee9fd9538ecbe7ed670f84e5111/transformed/jetified-ui-text-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/19dc5f478eae81c12bf0e5c26f4aaf7a/transformed/jetified-ui-tooling-preview-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/06c2b8d712be0c5aec24fa6bb1a3fc2c/transformed/jetified-ui-graphics-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.activity:activity-compose:1.9.1] /home/openclaw/.gradle/caches/transforms-4/4d83e96e5f47eb8ef4bd6c9c1e7dcf06/transformed/jetified-activity-compose-1.9.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/de5b237bf7961b0d8aeee1d0d8c312ff/transformed/jetified-lifecycle-runtime-ktx-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.4] /home/openclaw/.gradle/caches/transforms-4/d2d61a1cf122cfebaf07a68cf6e63a73/transformed/lifecycle-livedata-core-2.8.4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/openclaw/.gradle/caches/transforms-4/4e5cb5e93d1fedc864dc13475421dda1/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/openclaw/.gradle/caches/transforms-4/b22a9d514646b3fe7b54b3b91b3c93f5/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/9c2c76125db4e5e7ced37e66e8c3f818/transformed/jetified-lifecycle-runtime-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/b639c1fa5fe7b5a6e751826cf87d1680/transformed/jetified-lifecycle-viewmodel-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4] /home/openclaw/.gradle/caches/transforms-4/aed1409da5d164047f30cf3ddd33bff1/transformed/jetified-lifecycle-viewmodel-ktx-2.8.4/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.4] /home/openclaw/.gradle/caches/transforms-4/bb838c89ec76c20d1a9051b09edef4b0/transformed/jetified-lifecycle-viewmodel-savedstate-2.8.4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/3b8e16ba88dd830669e23b3e7c64733d/transformed/jetified-lifecycle-runtime-compose-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/d233d62df81feedacd15ca116cbc731a/transformed/jetified-lifecycle-viewmodel-compose-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/f8e77c20973de08ca5fa2d43f3a2a7f7/transformed/jetified-ui-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.autofill:autofill:1.0.0] /home/openclaw/.gradle/caches/transforms-4/25ed59d835cb96e892ca6107b9718763/transformed/jetified-autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/openclaw/.gradle/caches/transforms-4/f6a512039cc55f6d52832d69d3506a64/transformed/jetified-customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.13.1] /home/openclaw/.gradle/caches/transforms-4/d7caa4bb014a051b555c249dcfbfc2ac/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/openclaw/.gradle/caches/transforms-4/f37e92cee4e3ddf82563ee998df70d1b/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/44e70573f807bb964411f00c988fa448/transformed/jetified-runtime-saveable-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/0195a4df82ca7e1831ad07092d807ab5/transformed/jetified-runtime-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/openclaw/.gradle/caches/transforms-4/32578976e63666c8bed89db13aa659cf/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/openclaw/.gradle/caches/transforms-4/f693e786f2891439d58ddec6d74d112b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/openclaw/.gradle/caches/transforms-4/2e5a1d18d34836be642e419052172686/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /home/openclaw/.gradle/caches/transforms-4/344c5a124fda4895f30b711f1028135b/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/openclaw/.gradle/caches/transforms-4/edaff893c675659755047fa3c0ac4da6/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:4:5-71
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:4:22-68
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:5:22-74
+uses-permission#android.permission.FOREGROUND_SERVICE_MICROPHONE
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:6:5-88
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:6:22-85
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:7:5-77
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:7:22-74
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:8:5-68
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:8:22-65
+uses-permission#android.permission.VIBRATE
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:9:5-66
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:9:22-63
+application
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:11:5-35:19
+INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:11:5-35:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/openclaw/.gradle/caches/transforms-4/f693e786f2891439d58ddec6d74d112b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/openclaw/.gradle/caches/transforms-4/f693e786f2891439d58ddec6d74d112b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/openclaw/.gradle/caches/transforms-4/2e5a1d18d34836be642e419052172686/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/openclaw/.gradle/caches/transforms-4/2e5a1d18d34836be642e419052172686/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:16:9-35
+	android:label
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:14:9-41
+	android:roundIcon
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:15:9-54
+	android:icon
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:13:9-43
+	android:allowBackup
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:12:9-35
+	android:theme
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:17:9-46
+activity#com.tallyvox.MainActivity
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:19:9-28:20
+	android:screenOrientation
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:22:13-52
+	android:exported
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:21:13-36
+	android:configChanges
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:23:13-87
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:20:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:24:13-27:29
+action#android.intent.action.MAIN
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:25:17-69
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:25:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:26:17-77
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:26:27-74
+service#com.tallyvox.service.CounterService
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:30:9-33:58
+	android:exported
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:32:13-37
+	android:foregroundServiceType
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:33:13-55
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:31:13-51
+uses-sdk
+INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml
+INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml
+MERGED from [androidx.activity:activity:1.9.1] /home/openclaw/.gradle/caches/transforms-4/92f60779d27bea3e3f32115cc6060221/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.1] /home/openclaw/.gradle/caches/transforms-4/92f60779d27bea3e3f32115cc6060221/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.1] /home/openclaw/.gradle/caches/transforms-4/c561e55d4a9d1aa7f085cf9936f56068/transformed/jetified-activity-ktx-1.9.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.1] /home/openclaw/.gradle/caches/transforms-4/c561e55d4a9d1aa7f085cf9936f56068/transformed/jetified-activity-ktx-1.9.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/openclaw/.gradle/caches/transforms-4/3f15ce2397201b5ddd8b0a094b6b92e6/transformed/jetified-material3-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/openclaw/.gradle/caches/transforms-4/3f15ce2397201b5ddd8b0a094b6b92e6/transformed/jetified-material3-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/3d5fd8cc7e541121e2f7418ff4bac181/transformed/jetified-material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/3d5fd8cc7e541121e2f7418ff4bac181/transformed/jetified-material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/7d324dabba4426f31e5dd6ec33952c8e/transformed/jetified-material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/7d324dabba4426f31e5dd6ec33952c8e/transformed/jetified-material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/05dfbed68a6ba8c164f5fba6e75eba49/transformed/jetified-material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/05dfbed68a6ba8c164f5fba6e75eba49/transformed/jetified-material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/f1341fa1fbedbdd8198fa1ede0a56ec4/transformed/jetified-animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/f1341fa1fbedbdd8198fa1ede0a56ec4/transformed/jetified-animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/6ea3d5b1270d96e74c7206e18dd94f4d/transformed/jetified-animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/6ea3d5b1270d96e74c7206e18dd94f4d/transformed/jetified-animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/c1bd4b7f2cd83dd23131487753aac3d5/transformed/jetified-foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/c1bd4b7f2cd83dd23131487753aac3d5/transformed/jetified-foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/b2595a1de5edebdff3c671dc9e45aa52/transformed/jetified-foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/b2595a1de5edebdff3c671dc9e45aa52/transformed/jetified-foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/e90b16b9795f8bd52dbb87a4ee148ddb/transformed/jetified-ui-tooling-data-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/e90b16b9795f8bd52dbb87a4ee148ddb/transformed/jetified-ui-tooling-data-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/73591573397ba2a442e5a01721619dd1/transformed/jetified-ui-unit-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/73591573397ba2a442e5a01721619dd1/transformed/jetified-ui-unit-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/5afd00cf4a78fd9adac4a00de7d646e1/transformed/jetified-ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/5afd00cf4a78fd9adac4a00de7d646e1/transformed/jetified-ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/2f4674b64ca8a132d94fbfccac682b23/transformed/jetified-ui-util-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/2f4674b64ca8a132d94fbfccac682b23/transformed/jetified-ui-util-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/e4180ee9fd9538ecbe7ed670f84e5111/transformed/jetified-ui-text-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/e4180ee9fd9538ecbe7ed670f84e5111/transformed/jetified-ui-text-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/19dc5f478eae81c12bf0e5c26f4aaf7a/transformed/jetified-ui-tooling-preview-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/19dc5f478eae81c12bf0e5c26f4aaf7a/transformed/jetified-ui-tooling-preview-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/06c2b8d712be0c5aec24fa6bb1a3fc2c/transformed/jetified-ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/06c2b8d712be0c5aec24fa6bb1a3fc2c/transformed/jetified-ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.9.1] /home/openclaw/.gradle/caches/transforms-4/4d83e96e5f47eb8ef4bd6c9c1e7dcf06/transformed/jetified-activity-compose-1.9.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.9.1] /home/openclaw/.gradle/caches/transforms-4/4d83e96e5f47eb8ef4bd6c9c1e7dcf06/transformed/jetified-activity-compose-1.9.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/de5b237bf7961b0d8aeee1d0d8c312ff/transformed/jetified-lifecycle-runtime-ktx-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/de5b237bf7961b0d8aeee1d0d8c312ff/transformed/jetified-lifecycle-runtime-ktx-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.4] /home/openclaw/.gradle/caches/transforms-4/d2d61a1cf122cfebaf07a68cf6e63a73/transformed/lifecycle-livedata-core-2.8.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.4] /home/openclaw/.gradle/caches/transforms-4/d2d61a1cf122cfebaf07a68cf6e63a73/transformed/lifecycle-livedata-core-2.8.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/openclaw/.gradle/caches/transforms-4/4e5cb5e93d1fedc864dc13475421dda1/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/openclaw/.gradle/caches/transforms-4/4e5cb5e93d1fedc864dc13475421dda1/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/openclaw/.gradle/caches/transforms-4/b22a9d514646b3fe7b54b3b91b3c93f5/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/openclaw/.gradle/caches/transforms-4/b22a9d514646b3fe7b54b3b91b3c93f5/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/9c2c76125db4e5e7ced37e66e8c3f818/transformed/jetified-lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/9c2c76125db4e5e7ced37e66e8c3f818/transformed/jetified-lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/b639c1fa5fe7b5a6e751826cf87d1680/transformed/jetified-lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/b639c1fa5fe7b5a6e751826cf87d1680/transformed/jetified-lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4] /home/openclaw/.gradle/caches/transforms-4/aed1409da5d164047f30cf3ddd33bff1/transformed/jetified-lifecycle-viewmodel-ktx-2.8.4/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4] /home/openclaw/.gradle/caches/transforms-4/aed1409da5d164047f30cf3ddd33bff1/transformed/jetified-lifecycle-viewmodel-ktx-2.8.4/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.4] /home/openclaw/.gradle/caches/transforms-4/bb838c89ec76c20d1a9051b09edef4b0/transformed/jetified-lifecycle-viewmodel-savedstate-2.8.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.4] /home/openclaw/.gradle/caches/transforms-4/bb838c89ec76c20d1a9051b09edef4b0/transformed/jetified-lifecycle-viewmodel-savedstate-2.8.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/3b8e16ba88dd830669e23b3e7c64733d/transformed/jetified-lifecycle-runtime-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/3b8e16ba88dd830669e23b3e7c64733d/transformed/jetified-lifecycle-runtime-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/d233d62df81feedacd15ca116cbc731a/transformed/jetified-lifecycle-viewmodel-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.4] /home/openclaw/.gradle/caches/transforms-4/d233d62df81feedacd15ca116cbc731a/transformed/jetified-lifecycle-viewmodel-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/f8e77c20973de08ca5fa2d43f3a2a7f7/transformed/jetified-ui-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/f8e77c20973de08ca5fa2d43f3a2a7f7/transformed/jetified-ui-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /home/openclaw/.gradle/caches/transforms-4/25ed59d835cb96e892ca6107b9718763/transformed/jetified-autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /home/openclaw/.gradle/caches/transforms-4/25ed59d835cb96e892ca6107b9718763/transformed/jetified-autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/openclaw/.gradle/caches/transforms-4/f6a512039cc55f6d52832d69d3506a64/transformed/jetified-customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/openclaw/.gradle/caches/transforms-4/f6a512039cc55f6d52832d69d3506a64/transformed/jetified-customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.13.1] /home/openclaw/.gradle/caches/transforms-4/d7caa4bb014a051b555c249dcfbfc2ac/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /home/openclaw/.gradle/caches/transforms-4/d7caa4bb014a051b555c249dcfbfc2ac/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/openclaw/.gradle/caches/transforms-4/f37e92cee4e3ddf82563ee998df70d1b/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/openclaw/.gradle/caches/transforms-4/f37e92cee4e3ddf82563ee998df70d1b/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/44e70573f807bb964411f00c988fa448/transformed/jetified-runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/44e70573f807bb964411f00c988fa448/transformed/jetified-runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/0195a4df82ca7e1831ad07092d807ab5/transformed/jetified-runtime-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/0195a4df82ca7e1831ad07092d807ab5/transformed/jetified-runtime-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/openclaw/.gradle/caches/transforms-4/32578976e63666c8bed89db13aa659cf/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/openclaw/.gradle/caches/transforms-4/32578976e63666c8bed89db13aa659cf/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/openclaw/.gradle/caches/transforms-4/f693e786f2891439d58ddec6d74d112b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/openclaw/.gradle/caches/transforms-4/f693e786f2891439d58ddec6d74d112b/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/openclaw/.gradle/caches/transforms-4/2e5a1d18d34836be642e419052172686/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/openclaw/.gradle/caches/transforms-4/2e5a1d18d34836be642e419052172686/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/openclaw/.gradle/caches/transforms-4/344c5a124fda4895f30b711f1028135b/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/openclaw/.gradle/caches/transforms-4/344c5a124fda4895f30b711f1028135b/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/openclaw/.gradle/caches/transforms-4/edaff893c675659755047fa3c0ac4da6/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/openclaw/.gradle/caches/transforms-4/edaff893c675659755047fa3c0ac4da6/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:24:13-71
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/openclaw/.gradle/caches/transforms-4/2e5a1d18d34836be642e419052172686/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/openclaw/.gradle/caches/transforms-4/2e5a1d18d34836be642e419052172686/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+permission#com.tallyvox.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+uses-permission#com.tallyvox.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92

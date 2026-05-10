@@ -1,0 +1,164 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.tallyvox"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+11-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:4:5-71
+11-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:4:22-68
+12    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+12-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:5:5-77
+12-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:5:22-74
+13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+13-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:6:5-88
+13-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:6:22-85
+14    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+14-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:7:5-77
+14-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:7:22-74
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:8:5-68
+15-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:8:22-65
+16    <uses-permission android:name="android.permission.VIBRATE" />
+16-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:9:5-66
+16-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:9:22-63
+17
+18    <permission
+18-->[androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+19        android:name="com.tallyvox.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+19-->[androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+20        android:protectionLevel="signature" />
+20-->[androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+21
+22    <uses-permission android:name="com.tallyvox.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+22-->[androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+22-->[androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+23
+24    <application
+24-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:11:5-35:19
+25        android:allowBackup="true"
+25-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:12:9-35
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+27        android:debuggable="true"
+28        android:extractNativeLibs="false"
+29        android:icon="@mipmap/ic_launcher"
+29-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:13:9-43
+30        android:label="@string/app_name"
+30-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:14:9-41
+31        android:roundIcon="@mipmap/ic_launcher_round"
+31-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:15:9-54
+32        android:supportsRtl="true"
+32-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:16:9-35
+33        android:theme="@style/Theme.TallyVox" >
+33-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:17:9-46
+34        <activity
+34-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:19:9-28:20
+35            android:name="com.tallyvox.MainActivity"
+35-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:20:13-41
+36            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+36-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:23:13-87
+37            android:exported="true"
+37-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:21:13-36
+38            android:screenOrientation="unspecified" >
+38-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:22:13-52
+39            <intent-filter>
+39-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:24:13-27:29
+40                <action android:name="android.intent.action.MAIN" />
+40-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:25:17-69
+40-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:25:25-66
+41
+42                <category android:name="android.intent.category.LAUNCHER" />
+42-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:26:17-77
+42-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:26:27-74
+43            </intent-filter>
+44        </activity>
+45
+46        <service
+46-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:30:9-33:58
+47            android:name="com.tallyvox.service.CounterService"
+47-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:31:13-51
+48            android:exported="false"
+48-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:32:13-37
+49            android:foregroundServiceType="microphone" />
+49-->/home/openclaw/.openclaw/workspace/tallyvox/app/src/main/AndroidManifest.xml:33:13-55
+50
+51        <activity
+51-->[androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:23:9-25:39
+52            android:name="androidx.compose.ui.tooling.PreviewActivity"
+52-->[androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:24:13-71
+53            android:exported="true" />
+53-->[androidx.compose.ui:ui-tooling-android:1.6.8] /home/openclaw/.gradle/caches/transforms-4/aff98421a3a0f06d5e05aaee797ba1a4/transformed/jetified-ui-tooling-release/AndroidManifest.xml:25:13-36
+54
+55        <provider
+55-->[androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+56            android:name="androidx.startup.InitializationProvider"
+56-->[androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:25:13-67
+57            android:authorities="com.tallyvox.androidx-startup"
+57-->[androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:26:13-68
+58            android:exported="false" >
+58-->[androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:27:13-37
+59            <meta-data
+59-->[androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+60                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+60-->[androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:30:17-75
+61                android:value="androidx.startup" />
+61-->[androidx.emoji2:emoji2:1.3.0] /home/openclaw/.gradle/caches/transforms-4/1b110453d2ccfc9db9793eab2130b9ce/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:31:17-49
+62            <meta-data
+62-->[androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:29:13-31:52
+63                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+63-->[androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:30:17-78
+64                android:value="androidx.startup" />
+64-->[androidx.lifecycle:lifecycle-process:2.8.4] /home/openclaw/.gradle/caches/transforms-4/4aa22318d2bdbd9513200f1fb4e0b6e7/transformed/jetified-lifecycle-process-2.8.4/AndroidManifest.xml:31:17-49
+65            <meta-data
+65-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+66                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+66-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+67                android:value="androidx.startup" />
+67-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+68        </provider>
+69
+70        <receiver
+70-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+71            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+71-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+72            android:directBootAware="false"
+72-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+73            android:enabled="true"
+73-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+74            android:exported="true"
+74-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+75            android:permission="android.permission.DUMP" >
+75-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+76            <intent-filter>
+76-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+77                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+78            </intent-filter>
+79            <intent-filter>
+79-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+80                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+81            </intent-filter>
+82            <intent-filter>
+82-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+83                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+84            </intent-filter>
+85            <intent-filter>
+85-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+86                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+86-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+86-->[androidx.profileinstaller:profileinstaller:1.3.1] /home/openclaw/.gradle/caches/transforms-4/5cce4c17833823727c968916caeefacb/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+87            </intent-filter>
+88        </receiver>
+89    </application>
+90
+91</manifest>
