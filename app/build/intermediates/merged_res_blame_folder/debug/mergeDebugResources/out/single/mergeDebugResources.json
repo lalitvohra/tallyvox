@@ -8,11 +8,19 @@
         "source": "com.tallyvox.app-main-47:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
+        "merged": "com.tallyvox.app-debug-45:/drawable_ic_minus.xml.flat",
+        "source": "com.tallyvox.app-main-47:/drawable/ic_minus.xml"
+    },
+    {
         "merged": "com.tallyvox.app-debug-45:/drawable_ic_counter.xml.flat",
         "source": "com.tallyvox.app-main-47:/drawable/ic_counter.xml"
     },
     {
         "merged": "com.tallyvox.app-debug-45:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "com.tallyvox.app-main-47:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.tallyvox.app-debug-45:/drawable_ic_plus.xml.flat",
+        "source": "com.tallyvox.app-main-47:/drawable/ic_plus.xml"
     }
 ]

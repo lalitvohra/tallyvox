@@ -3,6 +3,8 @@ local
 color ic_launcher_bg
 drawable ic_counter
 drawable ic_launcher_foreground
+drawable ic_minus
+drawable ic_plus
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
