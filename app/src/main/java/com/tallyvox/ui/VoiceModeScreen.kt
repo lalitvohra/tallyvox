@@ -527,12 +527,13 @@ private fun WaveformBars(
 
 @Composable
 fun PhraseConfirmDialog(
+    initialPhrase: String = "",
     onDismiss: () -> Unit,
     onSave: (String) -> Unit,
     onReRecord: () -> Unit,
     isDark: Boolean
 ) {
-    var phraseText by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf("") }
+    var phraseText by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(initialPhrase) }
     val textColor = if (isDark) Color(0xFFe8e7e3) else Color(0xFF1a1815)
     val surfaceColor = if (isDark) Color(0xFF171614) else Color(0xFFf9f8f5)
     val primaryColor = if (isDark) Color(0xFF4f98a3) else Color(0xFF01696f)

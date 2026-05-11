@@ -527,6 +527,7 @@ fun CounterScreen(
     // Voice mode dialogs
     if (showPhraseConfirmDialog) {
         PhraseConfirmDialog(
+            initialPhrase = savedPhraseText,
             onDismiss = { viewModel.dismissPhraseConfirmDialog() },
             onSave = { phrase ->
                 viewModel.onSavePhrase(phrase)
