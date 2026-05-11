@@ -528,7 +528,7 @@ fun CounterScreen(
     if (showPhraseConfirmDialog) {
         PhraseConfirmDialog(
             initialPhrase = savedPhraseText,
-            onDismiss = { viewModel.dismissPhraseConfirmDialog() },
+            onDismiss = { viewModel.onPhraseDialogCancel() },
             onSave = { phrase ->
                 viewModel.onSavePhrase(phrase)
                 viewModel.dismissPhraseConfirmDialog()

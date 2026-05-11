@@ -72,6 +72,11 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
     private val _showPhraseConfirmDialog = MutableStateFlow(false)
     val showPhraseConfirmDialog: StateFlow<Boolean> = _showPhraseConfirmDialog.asStateFlow()
 
+    // True while confirmation dialog is showing after stopping recording.
+    // Keeps the UI in RECORDING state until user Save/Cancel/ReRecord.
+    private val _phraseConfirmPending = MutableStateFlow(false)
+    val phraseConfirmPending: StateFlow<Boolean> = _phraseConfirmPending.asStateFlow()
+
     private val _showDeleteConfirmDialog = MutableStateFlow(false)
     val showDeleteConfirmDialog: StateFlow<Boolean> = _showDeleteConfirmDialog.asStateFlow()
 
@@ -159,7 +164,10 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         val listening = _voiceListening.value
         val phraseRecorded = _savedPhraseText.value.isNotBlank()
 
+        // While confirmation dialog is showing, keep UI in RECORDING state
+        // (avoids PHRASE_IDLE flicker before dialog appears on stop)
         _voiceUiState.value = when {
+            _phraseConfirmPending.value -> com.tallyvox.ui.VoiceUiState.RECORDING
             !phraseRecorded -> com.tallyvox.ui.VoiceUiState.NO_PHRASE
             _isRecording.value -> com.tallyvox.ui.VoiceUiState.RECORDING
             listening -> com.tallyvox.ui.VoiceUiState.PHRASE_LISTENING
@@ -408,10 +416,14 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
     }
 
     fun onStopRecording(): Boolean {
+        // Idempotent: if already showing confirm dialog or not recording, skip
+        if (!_isRecording.value || _phraseConfirmPending.value) return false
         android.util.Log.e("TallyVox", "onStopRecording called, isRecording=${_isRecording.value}")
         android.widget.Toast.makeText(application, "Stopping recording…", android.widget.Toast.LENGTH_SHORT).show()
         _isRecording.value = false
-        updateVoiceUiState()
+        // Do NOT call updateVoiceUiState() here — dialog must appear while
+        // UI is still in RECORDING state (spec requirement). Keep _phraseConfirmPending
+        // to block state transition until user resolves the dialog.
         var recordingOk = false
         try {
             val intent = Intent(application, CounterService::class.java).apply {
@@ -425,15 +437,15 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
             recordingOk = false
         }
         if (recordingOk) {
+            _phraseConfirmPending.value = true
             _showPhraseConfirmDialog.value = true
             android.util.Log.e("TallyVox", "onStopRecording: dialog should show now")
-        } else {
-            android.util.Log.e("TallyVox", "onStopRecording: recordingOk=false, NOT showing dialog")
         }
         return recordingOk
     }
 
     fun onSavePhrase(phrase: String) {
+        _phraseConfirmPending.value = false
         _savedPhraseText.value = phrase
         prefs.edit().putString(CounterService.KEY_SAVED_PHRASE, phrase).apply()
         prefs.edit().putBoolean(CounterService.KEY_PHRASE_RECORDED, true).apply()
@@ -444,7 +456,7 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
             }
             application.startService(intent)
         } catch (_: Exception) {}
-        _voiceUiState.value = com.tallyvox.ui.VoiceUiState.PHRASE_IDLE
+        updateVoiceUiState()  // transitions to PHRASE_IDLE or PHRASE_LISTENING
         // Restart the listening loop so the new phrase is active immediately
         try {
             val intent = Intent(application, CounterService::class.java).apply {
@@ -492,7 +504,17 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         _showPhraseConfirmDialog.value = false
     }
 
+    // Called when user taps outside dialog or presses back — cancels the recording
+    fun onPhraseDialogCancel() {
+        _phraseConfirmPending.value = false
+        _savedPhraseText.value = ""
+        _showPhraseConfirmDialog.value = false
+        _isRecording.value = false
+        updateVoiceUiState()
+    }
+
     fun confirmDeletePhrase() {
+        _phraseConfirmPending.value = false
         _showDeleteConfirmDialog.value = false
         _savedPhraseText.value = ""
         _voiceListening.value = false
