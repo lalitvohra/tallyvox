@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.tallyvox.app-mergeDebugResources-43:/values-lt/values-lt.xml",
+            "outputFile": "com.tallyvox.app-mergeDebugResources-44:/values-lt/values-lt.xml",
             "map": [
                 {
                     "source": "/home/openclaw/.gradle/caches/transforms-4/3f15ce2397201b5ddd8b0a094b6b92e6/transformed/jetified-material3-release/res/values-lt/values-lt.xml",

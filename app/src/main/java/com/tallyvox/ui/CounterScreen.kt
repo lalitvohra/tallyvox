@@ -69,6 +69,10 @@ fun CounterScreen(
     val counters by viewModel.counters.collectAsState()
     val voiceListening by viewModel.voiceListening.collectAsState()
     val voiceHeard by viewModel.voiceHeard.collectAsState()
+    val voiceUiState by viewModel.voiceUiState.collectAsState()
+    val savedPhraseText by viewModel.savedPhraseText.collectAsState()
+    val isRecording by viewModel.isRecording.collectAsState()
+    val recordingAmplitude by viewModel.recordingAmplitude.collectAsState()
     val isDark = isSystemInDarkTheme()
 
     val primaryColor = if (isDark) DarkPrimary else LightPrimary
@@ -182,6 +186,26 @@ fun CounterScreen(
                 }
             }
 
+
+            if (counters.isVoiceMode) {
+                VoiceModeScreen(
+                    voiceUiState = voiceUiState,
+                    savedPhrase = savedPhraseText,
+                    isListening = voiceListening,
+                    isDark = isDark,
+                    isRecording = isRecording,
+                    onStartRecording = { viewModel.onStartRecording() },
+                    onStopRecording = { viewModel.onStopRecording() },
+                    onSavePhrase = { viewModel.onSavePhrase(it) },
+                    onReRecord = { viewModel.onReRecord() },
+                    onStartListening = { viewModel.onStartListening() },
+                    onStopListening = { viewModel.onStopListening() },
+                    onDeletePhrase = { viewModel.onDeletePhrase() },
+                    recordingAmplitude = recordingAmplitude,
+                    isVoiceHeard = voiceHeard
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+            }
             Spacer(modifier = Modifier.height(20.dp))
 
             // Counter display area

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.tallyvox.app-mergeDebugResources-43:/values-uz/values-uz.xml",
+            "outputFile": "com.tallyvox.app-mergeDebugResources-44:/values-uz/values-uz.xml",
             "map": [
                 {
                     "source": "/home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/res/values-uz/values-uz.xml",

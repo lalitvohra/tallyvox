@@ -1,8 +1,11 @@
 package com.tallyvox
 
 import android.app.Application
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -22,11 +25,20 @@ import kotlinx.coroutines.launch
 
 class CounterViewModel(private val application: Application) : AndroidViewModel(application) {
 
-    private val prefs = application.getSharedPreferences("tallyvox", Context.MODE_PRIVATE)
+    companion object {
+        const val PREFS_NAME = "tallyvox_prefs"
+    }
+
+    private val prefs: SharedPreferences by lazy {
+        application.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    }
+
+    // Load initial state from SharedPreferences (same file CounterService uses)
+    private val initial = prefs.getInt("primary", 0)
 
     private val _counters = MutableStateFlow(
         Counters(
-            primary = prefs.getInt("primary", 0),
+            primary = initial,
             secondary = prefs.getInt("secondary", 0),
             interval = prefs.getInt("interval", 100),
             isVoiceMode = prefs.getBoolean("voice_mode", false)
@@ -40,7 +52,29 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
     private val _voiceHeard = MutableStateFlow(false)
     val voiceHeard: StateFlow<Boolean> = _voiceHeard.asStateFlow()
 
+    // Voice Mode screen state
+    private val _voiceUiState = MutableStateFlow(com.tallyvox.ui.VoiceUiState.NO_PHRASE)
+    val voiceUiState: StateFlow<com.tallyvox.ui.VoiceUiState> = _voiceUiState.asStateFlow()
+
+    private val _savedPhraseText = MutableStateFlow("")
+    val savedPhraseText: StateFlow<String> = _savedPhraseText.asStateFlow()
+
+    private val _recordingAmplitude = MutableStateFlow(0f)
+    val recordingAmplitude: StateFlow<Float> = _recordingAmplitude.asStateFlow()
+
+    private val _isRecording = MutableStateFlow(false)
+    val isRecording: StateFlow<Boolean> = _isRecording.asStateFlow()
+
+    private val _showPhraseConfirmDialog = MutableStateFlow(false)
+    val showPhraseConfirmDialog: StateFlow<Boolean> = _showPhraseConfirmDialog.asStateFlow()
+
+    private val _showDeleteConfirmDialog = MutableStateFlow(false)
+    val showDeleteConfirmDialog: StateFlow<Boolean> = _showDeleteConfirmDialog.asStateFlow()
+
     private var speechRecognizer: SpeechRecognizer? = null
+
+    @Volatile
+    private var voiceRestartBlocked = false
 
     private val vibrator: Vibrator by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -53,7 +87,49 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
+    // Broadcast receiver for CounterService broadcasts
+    private val voiceReceiver = object : BroadcastReceiver() {
+        override fun onReceive(ctx: Context?, intent: Intent?) {
+            when (intent?.action) {
+                "com.tallyvox.VOICE_LISTENING" -> {
+                    _voiceListening.value = intent.getBooleanExtra("listening", false)
+                    updateVoiceUiState()
+                }
+                "com.tallyvox.VOICE_HEARD" -> {
+                    _voiceHeard.value = true
+                    increment()
+                    viewModelScope.launch {
+                        kotlinx.coroutines.delay(600)
+                        _voiceHeard.value = false
+                    }
+                }
+                "com.tallyvox.VOICE_AMPLITUDE" -> {
+                    val amp = intent.getIntExtra("amplitude", 0)
+                    _recordingAmplitude.value = amp.toFloat()
+                }
+            }
+        }
+    }
+
     init {
+        // Load phrase state from CounterService companion
+        CounterService::class.java.getDeclaredField("savedPhraseText").apply { isAccessible = true }
+        _savedPhraseText.value = prefs.getString(CounterService.KEY_SAVED_PHRASE, "") ?: ""
+        val phraseRecorded = prefs.getBoolean(CounterService.KEY_PHRASE_RECORDED, false)
+
+        _voiceUiState.value = if (phraseRecorded) com.tallyvox.ui.VoiceUiState.PHRASE_IDLE else com.tallyvox.ui.VoiceUiState.NO_PHRASE
+
+        // Register broadcast receiver
+        val filter = IntentFilter().apply {
+            addAction("com.tallyvox.VOICE_LISTENING")
+            addAction("com.tallyvox.VOICE_HEARD")
+            addAction("com.tallyvox.VOICE_AMPLITUDE")
+        }
+        try {
+            @Suppress("UNCHECKED_CAST")
+            application.registerReceiver(voiceReceiver, filter, 0)
+        } catch (_: Exception) {}
+
         if (_counters.value.isVoiceMode && hasMicPermission()) {
             startListening()
         }
@@ -64,6 +140,19 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
             android.content.pm.PackageManager.PERMISSION_GRANTED
     }
 
+    private fun updateVoiceUiState() {
+        val listening = _voiceListening.value
+        val phraseRecorded = _savedPhraseText.value.isNotBlank()
+
+        _voiceUiState.value = when {
+            !phraseRecorded -> com.tallyvox.ui.VoiceUiState.NO_PHRASE
+            _isRecording.value -> com.tallyvox.ui.VoiceUiState.RECORDING
+            listening -> com.tallyvox.ui.VoiceUiState.PHRASE_LISTENING
+            else -> com.tallyvox.ui.VoiceUiState.PHRASE_IDLE
+        }
+    }
+
+    // Save to SharedPreferences (same file CounterService and CounterWidget use)
     private fun saveState() {
         prefs.edit().apply {
             putInt("primary", _counters.value.primary)
@@ -74,17 +163,20 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         }
     }
 
+    // Sync ViewModel → Service companion vars + update notification
     private fun notifyChange() {
-        CounterService.updateNotification(
-            _counters.value.primary,
-            _counters.value.secondary,
-            _counters.value.interval,
-            application
-        )
+        CounterService.currentPrimary = _counters.value.primary
+        CounterService.currentSecondary = _counters.value.secondary
+        CounterService.currentInterval = _counters.value.interval
+        CounterService.updateNotification(application)
+        CounterWidget.updateAllWidgets(application)
     }
 
-    // Called when notification action updates count directly
+    // Called when notification action updates count — keep ViewModel in sync
     fun syncFromService(primary: Int, secondary: Int, interval: Int) {
+        CounterService.currentPrimary = primary
+        CounterService.currentSecondary = secondary
+        CounterService.currentInterval = interval
         _counters.value = Counters(primary, secondary, interval, _counters.value.isVoiceMode)
         saveState()
     }
@@ -148,8 +240,10 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         _counters.value = _counters.value.copy(isVoiceMode = newMode)
         saveState()
         if (newMode) {
-            if (hasMicPermission()) startListening() else stopListening()
+            // Switching INTO voice mode — stop old listening, let VoiceModeScreen handle its own flow
+            stopListening()
         } else {
+            // Switching OUT of voice mode — stop everything
             stopListening()
         }
     }
@@ -157,35 +251,48 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
     fun startListening() {
         if (!hasMicPermission()) return
         if (!SpeechRecognizer.isRecognitionAvailable(application)) return
+        voiceRestartBlocked = false
         _voiceListening.value = true
         startSpeechRecognition()
+        updateVoiceUiState()
     }
 
     fun stopListening() {
+        voiceRestartBlocked = true
         _voiceListening.value = false
+        mainHandler.removeCallbacksAndMessages(null)
         try {
             speechRecognizer?.stopListening()
-        } catch (_: Exception) {
-            // ignore
-        }
+        } catch (_: Exception) {}
+        try {
+            speechRecognizer?.destroy()
+        } catch (_: Exception) {}
+        speechRecognizer = null
+        updateVoiceUiState()
     }
 
     private fun startSpeechRecognition() {
+        if (voiceRestartBlocked || !_voiceListening.value) return
         if (!hasMicPermission()) {
             _voiceListening.value = false
+            updateVoiceUiState()
             return
         }
 
-        try {
-            speechRecognizer?.destroy()
-        } catch (_: Exception) {
-            // ignore
+        try { speechRecognizer?.destroy() } catch (_: Exception) {}
+        speechRecognizer = null
+
+        if (!SpeechRecognizer.isRecognitionAvailable(application)) {
+            _voiceListening.value = false
+            updateVoiceUiState()
+            return
         }
 
         try {
             speechRecognizer = SpeechRecognizer.createSpeechRecognizer(application)
         } catch (_: Exception) {
             _voiceListening.value = false
+            updateVoiceUiState()
             return
         }
 
@@ -203,27 +310,35 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
             override fun onRmsChanged(rmsdB: Float) {}
             override fun onBufferReceived(buffer: ByteArray?) {}
             override fun onEndOfSpeech() {}
+
             override fun onError(error: Int) {
+                if (voiceRestartBlocked || !_voiceListening.value) return
                 val restartable = error in listOf(
                     SpeechRecognizer.ERROR_NO_MATCH,
                     SpeechRecognizer.ERROR_SPEECH_TIMEOUT,
                     SpeechRecognizer.ERROR_NETWORK_TIMEOUT,
-                    SpeechRecognizer.ERROR_RECOGNIZER_BUSY,
-                    SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS
+                    SpeechRecognizer.ERROR_RECOGNIZER_BUSY
                 )
-                if (restartable && _voiceListening.value) {
-                    mainHandler.postDelayed({ startSpeechRecognition() }, 500)
+                if (restartable) {
+                    mainHandler.postDelayed({
+                        if (!voiceRestartBlocked && _voiceListening.value) {
+                            startSpeechRecognition()
+                        }
+                    }, 1000)
                 }
             }
 
             override fun onResults(results: android.os.Bundle?) {
+                if (voiceRestartBlocked || !_voiceListening.value) return
                 val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
                 if (!matches.isNullOrEmpty()) {
                     triggerVoiceHeard()
                 }
-                if (_voiceListening.value) {
-                    mainHandler.postDelayed({ startSpeechRecognition() }, 300)
-                }
+                mainHandler.postDelayed({
+                    if (!voiceRestartBlocked && _voiceListening.value) {
+                        startSpeechRecognition()
+                    }
+                }, 800)
             }
 
             override fun onPartialResults(partialResults: android.os.Bundle?) {}
@@ -234,6 +349,7 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
             speechRecognizer?.startListening(intent)
         } catch (_: Exception) {
             _voiceListening.value = false
+            updateVoiceUiState()
         }
     }
 
@@ -247,6 +363,123 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         }
     }
 
+    // ─── Voice Mode Screen Methods ─────────────────────────────────────────
+
+    fun onStartRecording() {
+        if (!hasMicPermission()) {
+            android.widget.Toast.makeText(application, "Mic permission needed!", android.widget.Toast.LENGTH_SHORT).show()
+            return
+        }
+        _isRecording.value = true
+        // Set placeholder so phraseRecorded=true → after stop, voiceUiState=PHRASE_IDLE → dialog shows
+        _savedPhraseText.value = " "
+        updateVoiceUiState()
+        android.widget.Toast.makeText(application, "Recording started!", android.widget.Toast.LENGTH_SHORT).show()
+        // Tell CounterService to start recording
+        try {
+            val intent = Intent(application, CounterService::class.java).apply {
+                action = "com.tallyvox.ACTION_START_RECORDING"
+            }
+            application.startService(intent)
+        } catch (_: Exception) {}
+    }
+
+    fun onStopRecording(): Boolean {
+        android.util.Log.e("TallyVox", "onStopRecording called, isRecording=${_isRecording.value}")
+        android.widget.Toast.makeText(application, "Stopping recording…", android.widget.Toast.LENGTH_SHORT).show()
+        _isRecording.value = false
+        updateVoiceUiState()
+        var recordingOk = false
+        try {
+            val intent = Intent(application, CounterService::class.java).apply {
+                action = "com.tallyvox.ACTION_STOP_RECORDING"
+            }
+            application.startService(intent)
+            android.util.Log.e("TallyVox", "onStopRecording: service called ok")
+            recordingOk = true
+        } catch (e: Exception) {
+            android.util.Log.e("TallyVox", "onStopRecording: service error ${e.message}")
+            recordingOk = false
+        }
+        if (recordingOk) {
+            _showPhraseConfirmDialog.value = true
+            android.util.Log.e("TallyVox", "onStopRecording: dialog should show now")
+        } else {
+            android.util.Log.e("TallyVox", "onStopRecording: recordingOk=false, NOT showing dialog")
+        }
+        return recordingOk
+    }
+
+    fun onSavePhrase(phrase: String) {
+        _savedPhraseText.value = phrase
+        prefs.edit().putString(CounterService.KEY_SAVED_PHRASE, phrase).apply()
+        prefs.edit().putBoolean(CounterService.KEY_PHRASE_RECORDED, true).apply()
+        try {
+            val intent = Intent(application, CounterService::class.java).apply {
+                action = "com.tallyvox.ACTION_SAVE_PHRASE"
+                putExtra("phrase_text", phrase)
+            }
+            application.startService(intent)
+        } catch (_: Exception) {}
+        _voiceUiState.value = com.tallyvox.ui.VoiceUiState.PHRASE_IDLE
+    }
+
+    fun onReRecord() {
+        _isRecording.value = false
+        _savedPhraseText.value = ""
+        updateVoiceUiState()
+        onStartRecording()
+    }
+
+    fun onStartListening() {
+        if (!hasMicPermission()) return
+        _voiceListening.value = true
+        updateVoiceUiState()
+        try {
+            val intent = Intent(application, CounterService::class.java).apply {
+                action = "com.tallyvox.ACTION_START_LISTENING"
+            }
+            application.startService(intent)
+        } catch (_: Exception) {}
+    }
+
+    fun onStopListening() {
+        _voiceListening.value = false
+        updateVoiceUiState()
+        try {
+            val intent = Intent(application, CounterService::class.java).apply {
+                action = "com.tallyvox.ACTION_STOP_LISTENING"
+            }
+            application.startService(intent)
+        } catch (_: Exception) {}
+    }
+
+    fun onDeletePhrase() {
+        _showDeleteConfirmDialog.value = true
+    }
+
+    fun dismissPhraseConfirmDialog() {
+        _showPhraseConfirmDialog.value = false
+    }
+
+    fun confirmDeletePhrase() {
+        _showDeleteConfirmDialog.value = false
+        _savedPhraseText.value = ""
+        _voiceListening.value = false
+        _isRecording.value = false
+        updateVoiceUiState()
+        try {
+            val intent = Intent(application, CounterService::class.java).apply {
+                action = "com.tallyvox.ACTION_DELETE_PHRASE"
+            }
+            application.startService(intent)
+        } catch (_: Exception) {}
+    }
+
+    fun dismissDeleteDialog() {
+        _showDeleteConfirmDialog.value = false
+    }
+
     private fun haptic(durationMs: Long) {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -257,13 +490,14 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
                 @Suppress("DEPRECATION")
                 vibrator.vibrate(durationMs)
             }
-        } catch (_: Exception) {
-            // ignore
-        }
+        } catch (_: Exception) {}
     }
 
     override fun onCleared() {
-        speechRecognizer?.destroy()
+        stopListening()
+        try {
+            application.unregisterReceiver(voiceReceiver)
+        } catch (_: Exception) {}
         super.onCleared()
     }
 }

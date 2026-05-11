@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.tallyvox.app-mergeDebugResources-43:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.tallyvox.app-mergeDebugResources-44:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "/home/openclaw/.gradle/caches/transforms-4/f8e77c20973de08ca5fa2d43f3a2a7f7/transformed/jetified-ui-release/res/values-en-rAU/values-en-rAU.xml",

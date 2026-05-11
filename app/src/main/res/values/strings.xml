@@ -3,4 +3,6 @@
     <string name="app_name">TallyVox</string>
     <string name="channel_name">TallyVox Counter</string>
     <string name="channel_desc">Persistent counter notification</string>
+    <string name="widget_description">TallyVox counter with +/- buttons</string>
+    <string name="accessibility_service_description">TallyVox uses volume buttons to control the counter on the lock screen. Enable this service to use volume Up/Down keys while the screen is locked.</string>
 </resources>

@@ -23,6 +23,9 @@ color call_notification_decline_color
 color ic_launcher_bg
 color notification_action_color_filter
 color notification_icon_bg_color
+color notification_material_background_media_default_color
+color primary_text_default_material_dark
+color secondary_text_default_material_dark
 color vector_tint_color
 color vector_tint_theme_color
 dimen compat_button_inset_horizontal_material
@@ -55,6 +58,7 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_counter
 drawable ic_launcher_foreground
+drawable ic_mic
 drawable ic_minus
 drawable ic_plus
 drawable notification_action_background
@@ -70,6 +74,9 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable widget_background
+drawable widget_btn_minus_bg
+drawable widget_btn_plus_bg
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
 id accessibility_custom_action_1
@@ -103,6 +110,7 @@ id accessibility_custom_action_6
 id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
+id action0
 id action_container
 id action_divider
 id action_image
@@ -111,11 +119,13 @@ id actions
 id androidx_compose_ui_view_composition_context
 id async
 id blocking
+id cancel_action
 id chronometer
 id compose_view_saveable_id_tag
 id consume_window_insets_tag
 id dialog_button
 id edit_text_id
+id end_padder
 id forever
 id hide_ime_id
 id hide_in_inspector_tag
@@ -127,6 +137,8 @@ id is_pooling_container_tag
 id italic
 id line1
 id line3
+id media_actions
+id media_controller_compat_view_tag
 id normal
 id notification_background
 id notification_main_column
@@ -135,6 +147,7 @@ id pooling_container_listener_holder_tag
 id report_drawn
 id right_icon
 id right_side
+id status_bar_latest_event_content
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -156,19 +169,34 @@ id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
+id widget_btn_minus
+id widget_btn_plus
+id widget_count
 id wrapped_composition_tag
+integer cancel_button_image_alpha
 integer status_bar_notification_info_maxnum
 layout custom_dialog
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout notification_action
 layout notification_action_tombstone
+layout notification_media_action
+layout notification_media_cancel_action
+layout notification_template_big_media
+layout notification_template_big_media_custom
+layout notification_template_big_media_narrow
+layout notification_template_big_media_narrow_custom
 layout notification_template_custom_big
 layout notification_template_icon_group
+layout notification_template_lines_media
+layout notification_template_media
+layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout widget_counter
 mipmap ic_launcher
 mipmap ic_launcher_round
+string accessibility_service_description
 string androidx_startup
 string app_name
 string call_notification_answer_action
@@ -256,14 +284,20 @@ string tab
 string template_percent
 string tooltip_description
 string tooltip_label
+string widget_description
 style DialogWindowTheme
 style FloatingDialogTheme
 style FloatingDialogWindowTheme
 style TextAppearance_Compat_Notification
 style TextAppearance_Compat_Notification_Info
+style TextAppearance_Compat_Notification_Info_Media
 style TextAppearance_Compat_Notification_Line2
+style TextAppearance_Compat_Notification_Line2_Media
+style TextAppearance_Compat_Notification_Media
 style TextAppearance_Compat_Notification_Time
+style TextAppearance_Compat_Notification_Time_Media
 style TextAppearance_Compat_Notification_Title
+style TextAppearance_Compat_Notification_Title_Media
 style Theme_TallyVox
 style Widget_Compat_NotificationActionContainer
 style Widget_Compat_NotificationActionText
@@ -273,3 +307,5 @@ styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchSt
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
+xml accessibility_service_config
+xml widget_info

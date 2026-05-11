@@ -94,12 +94,7 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         // Push current count to notification when app comes to foreground
-        CounterService.updateNotification(
-            viewModel.counters.value.primary,
-            viewModel.counters.value.secondary,
-            viewModel.counters.value.interval,
-            this
-        )
+        CounterService.updateNotification(this)
     }
 
     override fun onTrimMemory(level: Int) {
@@ -111,22 +106,12 @@ class MainActivity : ComponentActivity() {
         return when (keyCode) {
             KeyEvent.KEYCODE_VOLUME_UP -> {
                 viewModel.increment()
-                CounterService.updateNotification(
-                    viewModel.counters.value.primary,
-                    viewModel.counters.value.secondary,
-                    viewModel.counters.value.interval,
-                    this
-                )
+                CounterService.updateNotification(this)
                 true
             }
             KeyEvent.KEYCODE_VOLUME_DOWN -> {
                 viewModel.decrement()
-                CounterService.updateNotification(
-                    viewModel.counters.value.primary,
-                    viewModel.counters.value.secondary,
-                    viewModel.counters.value.interval,
-                    this
-                )
+                CounterService.updateNotification(this)
                 true
             }
             else -> super.onKeyDown(keyCode, event)

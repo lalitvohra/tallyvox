@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="12dp"
+    android:background="@drawable/widget_background">
+
+    <ImageButton
+        android:id="@+id/widget_btn_minus"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_minus"
+        android:background="@drawable/widget_btn_minus_bg"
+        android:scaleType="centerInside"
+        android:contentDescription="Subtract" />
+
+    <TextView
+        android:id="@+id/widget_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="36sp"
+        android:textColor="#ffffff"
+        android:fontFamily="monospace"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/widget_btn_plus"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_plus"
+        android:background="@drawable/widget_btn_plus_bg"
+        android:scaleType="centerInside"
+        android:contentDescription="Add" />
+
+</LinearLayout>
