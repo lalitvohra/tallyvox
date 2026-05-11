@@ -49,6 +49,10 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
     private val _voiceListening = MutableStateFlow(false)
     val voiceListening: StateFlow<Boolean> = _voiceListening.asStateFlow()
 
+    // Mic permission state — exposed for Composable to read
+    private val _micPermissionGranted = MutableStateFlow(false)
+    val micPermissionGranted: StateFlow<Boolean> = _micPermissionGranted.asStateFlow()
+
     private val _voiceHeard = MutableStateFlow(false)
     val voiceHeard: StateFlow<Boolean> = _voiceHeard.asStateFlow()
 
@@ -135,10 +139,21 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         }
     }
 
+    // Override hasMicPermission to use our tracked state (more reliable for Composable)
     private fun hasMicPermission(): Boolean {
-        return application.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) ==
-            android.content.pm.PackageManager.PERMISSION_GRANTED
+        return _micPermissionGranted.value ||
+            application.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) ==
+                android.content.pm.PackageManager.PERMISSION_GRANTED
     }
+
+    // Called by MainActivity when permission result arrives
+    fun onMicPermissionResult(granted: Boolean) {
+        _micPermissionGranted.value = granted
+        if (granted) {
+            startListening()
+        }
+    }
+
 
     private fun updateVoiceUiState() {
         val listening = _voiceListening.value

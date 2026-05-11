@@ -69,6 +69,22 @@ fun CounterScreen(
     val counters by viewModel.counters.collectAsState()
     val voiceListening by viewModel.voiceListening.collectAsState()
     val voiceHeard by viewModel.voiceHeard.collectAsState()
+    val micPermissionGranted by viewModel.micPermissionGranted.collectAsState()
+
+    // Banner: show on first voice mode entry, reset on re-entry
+    var showBannerOnEntry by remember { mutableStateOf(true) }
+    var wasInVoiceMode by remember { mutableStateOf(false) }
+
+    // Track re-entry to voice mode for banner
+    LaunchedEffect(counters.isVoiceMode) {
+        if (counters.isVoiceMode && wasInVoiceMode) {
+            showBannerOnEntry = true
+        }
+        wasInVoiceMode = counters.isVoiceMode
+        if (counters.isVoiceMode) {
+            showBannerOnEntry = false
+        }
+    }
     val voiceUiState by viewModel.voiceUiState.collectAsState()
     val savedPhraseText by viewModel.savedPhraseText.collectAsState()
     val isRecording by viewModel.isRecording.collectAsState()
@@ -202,12 +218,13 @@ fun CounterScreen(
                     onStopListening = { viewModel.onStopListening() },
                     onDeletePhrase = { viewModel.onDeletePhrase() },
                     recordingAmplitude = recordingAmplitude,
+                    showBanner = showBannerOnEntry,
+                    hasMicPermission = micPermissionGranted,
+                    onRequestMicPermission = onRequestMicPermission,
                     isVoiceHeard = voiceHeard
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-            }
-            Spacer(modifier = Modifier.height(20.dp))
-
+            } else {
             // Counter display area
             Box(
                 modifier = Modifier
@@ -498,6 +515,7 @@ fun CounterScreen(
             )
 
             Spacer(modifier = Modifier.height(12.dp))
+            }
         }
     }
 

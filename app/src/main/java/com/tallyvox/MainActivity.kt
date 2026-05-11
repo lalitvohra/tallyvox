@@ -22,9 +22,7 @@ class MainActivity : ComponentActivity() {
     private val micPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { granted ->
-        if (granted) {
-            viewModel.startListening()
-        }
+        viewModel.onMicPermissionResult(granted)
     }
 
     private val notifPermissionLauncher = registerForActivityResult(

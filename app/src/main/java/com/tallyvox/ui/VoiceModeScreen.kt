@@ -66,6 +66,9 @@ fun VoiceModeScreen(
     isListening: Boolean,
     isDark: Boolean,
     isRecording: Boolean,
+    hasMicPermission: Boolean,
+    showBanner: Boolean,
+    onRequestMicPermission: () -> Unit,
     onStartRecording: () -> Unit,
     onStopRecording: () -> Unit,
     onSavePhrase: (String) -> Unit,
@@ -77,6 +80,7 @@ fun VoiceModeScreen(
     isVoiceHeard: Boolean
 ) {
     val context = LocalContext.current
+
 
 
     val primaryColor = if (isDark) Color(0xFF4f98a3) else Color(0xFF01696f)
@@ -103,6 +107,9 @@ fun VoiceModeScreen(
                 primaryColor = primaryColor,
                 textColor = textColor,
                 textMuted = textMuted,
+                showBanner = showBanner,
+                hasMicPermission = hasMicPermission,
+                onRequestMicPermission = onRequestMicPermission,
                 onRecord = onStartRecording
             )
         }
@@ -147,26 +154,31 @@ private fun NoPhraseState(
     primaryColor: Color,
     textColor: Color,
     textMuted: Color,
+    showBanner: Boolean,
+    hasMicPermission: Boolean,
+    onRequestMicPermission: () -> Unit,
     onRecord: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // UNMISTAKABLE TEST BANNER
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color(0xFFCC0000))
-                .padding(12.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = "NEW BUILD v18",
-                color = Color.White,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.ExtraBold
-            )
+        // TEST BANNER — only on first entry to voice mode
+        if (showBanner) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFFCC0000))
+                    .padding(12.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "NEW BUILD v18",
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.ExtraBold
+                )
+            }
         }
         Spacer(modifier = Modifier.height(12.dp))
         // VERSION TEST LABEL
@@ -216,7 +228,17 @@ private fun NoPhraseState(
                 .height(64.dp)
                 .clip(RoundedCornerShape(16.dp))
                 .background(primaryColor)
-                .clickable { onRecord() },
+                .clickable {
+                    if (!hasMicPermission) {
+                        try {
+                            onRequestMicPermission()
+                        } catch (_: Exception) {
+                            // Permission permanently denied — user needs app settings
+                        }
+                    } else {
+                        onRecord()
+                    }
+                },
             contentAlignment = Alignment.Center
         ) {
             Text(
