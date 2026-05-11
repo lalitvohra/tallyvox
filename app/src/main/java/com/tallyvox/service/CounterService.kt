@@ -282,6 +282,7 @@ class CounterService : Service() {
     fun stopListeningLoop() {
         voiceRestartBlocked = true
         isListeningActive = false
+        isRestartingLoop = false
         mainHandler.removeCallbacksAndMessages(null)
         cooldownActive = false
         try { speechRecognizer?.stopListening() } catch (_: Exception) {}
@@ -290,16 +291,23 @@ class CounterService : Service() {
         sendListeningBroadcast(false)
     }
 
-    private fun startSpeechRecognitionLoop() {
-        if (voiceRestartBlocked || !isListeningActive) return
+    private var isRestartingLoop = false
 
-        try { speechRecognizer?.destroy() } catch (_: Exception) {}
+    private fun startSpeechRecognitionLoop() {
+        if (voiceRestartBlocked || !isListeningActive || isRestartingLoop) return
+        isRestartingLoop = true
+
+        // Destroy old recognizer cleanly
+        val oldRecognizer = speechRecognizer
         speechRecognizer = null
+        try { oldRecognizer?.stopListening() } catch (_: Exception) {}
+        try { oldRecognizer?.destroy() } catch (_: Exception) {}
 
         try {
             speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this)
         } catch (_: Exception) {
             isListeningActive = false
+            isRestartingLoop = false
             sendListeningBroadcast(false)
             return
         }
@@ -321,7 +329,11 @@ class CounterService : Service() {
             override fun onEndOfSpeech() {}
 
             override fun onError(error: Int) {
-                if (voiceRestartBlocked || !isListeningActive) return
+                if (voiceRestartBlocked || !isListeningActive) {
+                    isRestartingLoop = false
+                    return
+                }
+                isRestartingLoop = false  // Reset so restart can proceed
                 val restartable = error in listOf(
                     SpeechRecognizer.ERROR_NO_MATCH,
                     SpeechRecognizer.ERROR_SPEECH_TIMEOUT,
@@ -329,31 +341,27 @@ class CounterService : Service() {
                     SpeechRecognizer.ERROR_RECOGNIZER_BUSY,
                     SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS
                 )
-                if (restartable) {
-                    mainHandler.postDelayed({
-                        if (!voiceRestartBlocked && isListeningActive) {
-                            startSpeechRecognitionLoop()
-                        }
-                    }, 1000)
-                } else {
-                    // For other errors (e.g. audio recording error), also restart
-                    mainHandler.postDelayed({
-                        if (!voiceRestartBlocked && isListeningActive) {
-                            startSpeechRecognitionLoop()
-                        }
-                    }, 2000)
-                }
+                val delay = if (restartable) 1000L else 2000L
+                mainHandler.postDelayed({
+                    if (!voiceRestartBlocked && isListeningActive && !isRestartingLoop) {
+                        startSpeechRecognitionLoop()
+                    }
+                }, delay)
             }
 
             override fun onResults(results: android.os.Bundle?) {
-                if (voiceRestartBlocked || !isListeningActive) return
+                if (voiceRestartBlocked || !isListeningActive) {
+                    isRestartingLoop = false
+                    return
+                }
                 val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
                 if (!matches.isNullOrEmpty()) {
                     val spoken = matches[0] ?: ""
                     checkPhraseMatch(spoken)
                 }
+                isRestartingLoop = false  // Allow restart
                 mainHandler.postDelayed({
-                    if (!voiceRestartBlocked && isListeningActive) {
+                    if (!voiceRestartBlocked && isListeningActive && !isRestartingLoop) {
                         startSpeechRecognitionLoop()
                     }
                 }, 500)
@@ -372,8 +380,10 @@ class CounterService : Service() {
 
         try {
             speechRecognizer?.startListening(intent)
+            isRestartingLoop = false
         } catch (_: Exception) {
             isListeningActive = false
+            isRestartingLoop = false
             sendListeningBroadcast(false)
         }
     }
