@@ -53,6 +53,8 @@ import androidx.compose.ui.window.Dialog
 import com.tallyvox.CounterViewModel
 import com.tallyvox.ui.theme.DarkError
 import com.tallyvox.ui.theme.DarkGold
+import com.tallyvox.ui.PhraseConfirmDialog
+import com.tallyvox.ui.DeletePhraseDialog
 import com.tallyvox.ui.theme.DarkPrimary
 import com.tallyvox.ui.theme.DarkSuccess
 import com.tallyvox.ui.theme.LightError
@@ -99,6 +101,8 @@ fun CounterScreen(
     var showIntervalDialog by remember { mutableStateOf(false) }
     var showResetPrimaryDialog by remember { mutableStateOf(false) }
     var showResetAllDialog by remember { mutableStateOf(false) }
+    val showPhraseConfirmDialog by viewModel.showPhraseConfirmDialog.collectAsState()
+    val showDeleteConfirmDialog by viewModel.showDeleteConfirmDialog.collectAsState()
 
     var lastTapTime by remember { mutableLongStateOf(0L) }
     val DEBOUNCE_MS = 300L
@@ -224,8 +228,9 @@ fun CounterScreen(
                     isVoiceHeard = voiceHeard
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-            } else {
-            // Counter display area
+            }
+
+            // Counter display area — always shown (weight=1f fills remaining space)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -515,11 +520,37 @@ fun CounterScreen(
             )
 
             Spacer(modifier = Modifier.height(12.dp))
-            }
+            Spacer(modifier = Modifier.height(12.dp))
         }
     }
 
-    // Dialogs
+    // Voice mode dialogs
+    if (showPhraseConfirmDialog) {
+        PhraseConfirmDialog(
+            onDismiss = { viewModel.dismissPhraseConfirmDialog() },
+            onSave = { phrase ->
+                viewModel.onSavePhrase(phrase)
+                viewModel.dismissPhraseConfirmDialog()
+            },
+            onReRecord = {
+                viewModel.onReRecord()
+                viewModel.dismissPhraseConfirmDialog()
+            },
+            isDark = isDark
+        )
+    }
+
+    if (showDeleteConfirmDialog) {
+        DeletePhraseDialog(
+            onDismiss = { viewModel.dismissDeleteDialog() },
+            onConfirm = {
+                viewModel.confirmDeletePhrase()
+            },
+            isDark = isDark
+        )
+    }
+
+    // Counter dialogs
     if (showIntervalDialog) {
         IntervalDialog(
             currentInterval = counters.interval,

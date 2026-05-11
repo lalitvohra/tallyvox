@@ -163,34 +163,6 @@ private fun NoPhraseState(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // TEST BANNER — only on first entry to voice mode
-        if (showBanner) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color(0xFFCC0000))
-                    .padding(12.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "NEW BUILD v18",
-                    color = Color.White,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.ExtraBold
-                )
-            }
-        }
-        Spacer(modifier = Modifier.height(12.dp))
-        // VERSION TEST LABEL
-        Text(
-            text = "v18 TEST",
-            fontSize = 10.sp,
-            color = Color.Red,
-            modifier = Modifier
-                .padding(4.dp)
-                .border(1.dp, Color.Red, RoundedCornerShape(4.dp))
-                .padding(horizontal = 6.dp, vertical = 2.dp)
-        )
         Spacer(modifier = Modifier.height(8.dp))
         // Grey mic icon
         Box(
