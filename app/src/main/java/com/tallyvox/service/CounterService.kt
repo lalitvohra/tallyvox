@@ -385,6 +385,9 @@ class CounterService : Service() {
         val normSpoken = spoken.lowercase().trim().replace(Regex("[^a-z0-9 ]"), "")
         val normSaved = savedPhraseText.lowercase().trim().replace(Regex("[^a-z0-9 ]"), "")
 
+        // Skip if no phrase saved (e.g., during re-record placeholder)
+        if (normSaved.isEmpty()) return
+
         android.util.Log.d("TallyVox", "phrase match check: spoken='$normSpoken' saved='$normSaved'")
 
         if (normSpoken.contains(normSaved)) {

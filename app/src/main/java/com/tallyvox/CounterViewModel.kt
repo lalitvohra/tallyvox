@@ -389,6 +389,14 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         // Set placeholder so phraseRecorded=true → after stop, voiceUiState=PHRASE_IDLE → dialog shows
         _savedPhraseText.value = " "
         updateVoiceUiState()
+        // Stop the speech recognizer loop — it runs independently of MediaRecorder
+        // and would otherwise keep matching the OLD saved phrase during recording
+        try {
+            val stopIntent = Intent(application, CounterService::class.java).apply {
+                action = "com.tallyvox.ACTION_STOP_LISTENING"
+            }
+            application.startService(stopIntent)
+        } catch (_: Exception) {}
         android.widget.Toast.makeText(application, "Recording started!", android.widget.Toast.LENGTH_SHORT).show()
         // Tell CounterService to start recording
         try {
@@ -437,6 +445,13 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
             application.startService(intent)
         } catch (_: Exception) {}
         _voiceUiState.value = com.tallyvox.ui.VoiceUiState.PHRASE_IDLE
+        // Restart the listening loop so the new phrase is active immediately
+        try {
+            val intent = Intent(application, CounterService::class.java).apply {
+                action = "com.tallyvox.ACTION_START_LISTENING"
+            }
+            application.startService(intent)
+        } catch (_: Exception) {}
     }
 
     fun onReRecord() {
