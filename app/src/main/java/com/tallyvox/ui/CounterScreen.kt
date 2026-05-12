@@ -1,6 +1,9 @@
 package com.tallyvox.ui
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.runtime.key
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -76,11 +79,19 @@ fun CounterScreen(
     // Banner: show on first voice mode entry, reset on re-entry
     var showBannerOnEntry by remember { mutableStateOf(true) }
     var wasInVoiceMode by remember { mutableStateOf(false) }
+    // Track how many times we've entered voice mode — used as Crossfade key
+    var voiceModeEntryCount by remember { androidx.compose.runtime.mutableIntStateOf(0) }
 
-    // Track re-entry to voice mode for banner
+    // Track re-entry to voice mode for banner + force fresh VoiceModeScreen composition
     LaunchedEffect(counters.isVoiceMode) {
-        if (counters.isVoiceMode && wasInVoiceMode) {
-            showBannerOnEntry = true
+        if (counters.isVoiceMode) {
+            voiceModeEntryCount++
+            // Reset voiceUiState to NO_PHRASE on every voice mode entry
+            // This fixes stale cached Compose state from previous voice mode visit
+            viewModel.resetVoiceUiState()
+            if (wasInVoiceMode) {
+                showBannerOnEntry = true
+            }
         }
         wasInVoiceMode = counters.isVoiceMode
         if (counters.isVoiceMode) {
@@ -207,27 +218,38 @@ fun CounterScreen(
             }
 
 
+            // `key()` forces Compose to FULLY dispose and remount VoiceModeScreen on every
+            // voice mode entry — fixes stale cached composition bug where old UI showed
             if (counters.isVoiceMode) {
-                VoiceModeScreen(
-                    voiceUiState = voiceUiState,
-                    savedPhrase = savedPhraseText,
-                    isListening = voiceListening,
-                    isDark = isDark,
-                    isRecording = isRecording,
-                    onStartRecording = { viewModel.onStartRecording() },
-                    onStopRecording = { viewModel.onStopRecording() },
-                    onSavePhrase = { viewModel.onSavePhrase(it) },
-                    onReRecord = { viewModel.onReRecord() },
-                    onStartListening = { viewModel.onStartListening() },
-                    onStopListening = { viewModel.onStopListening() },
-                    onDeletePhrase = { viewModel.onDeletePhrase() },
-                    recordingAmplitude = recordingAmplitude,
-                    showBanner = showBannerOnEntry,
-                    hasMicPermission = micPermissionGranted,
-                    onRequestMicPermission = onRequestMicPermission,
-                    isVoiceHeard = voiceHeard
-                )
-                Spacer(modifier = Modifier.height(16.dp))
+                key(voiceModeEntryCount) {
+                    VoiceModeScreen(
+                        voiceUiState = voiceUiState,
+                        savedPhrase = savedPhraseText,
+                        isListening = voiceListening,
+                        isDark = isDark,
+                        isRecording = isRecording,
+                        onStartRecording = { viewModel.onStartRecording() },
+                        onStopRecording = { viewModel.onStopRecording() },
+                        onSavePhrase = { viewModel.onSavePhrase(it) },
+                        onReRecord = { viewModel.onReRecord() },
+                        onStartListening = { viewModel.onStartListening() },
+                        onStopListening = { viewModel.onStopListening() },
+                        onDeletePhrase = { viewModel.onDeletePhrase() },
+                        recordingAmplitude = recordingAmplitude,
+                        showBanner = showBannerOnEntry,
+                        hasMicPermission = micPermissionGranted,
+                        onRequestMicPermission = onRequestMicPermission,
+                        isVoiceHeard = voiceHeard,
+                        primaryCount = counters.primary,
+                        secondaryCount = counters.secondary,
+                        interval = counters.interval,
+                        onMinusInterval = { viewModel.decrementInterval() },
+                        onPlusInterval = { viewModel.incrementInterval() },
+                        onResetPrimary = { viewModel.resetPrimary() },
+                        onResetAll = { viewModel.resetPrimary() }
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
             }
 
             // Counter display area — always shown (weight=1f fills remaining space)
@@ -246,10 +268,10 @@ fun CounterScreen(
                 ) {
                     Text(
                         text = "PRIMARY COUNT",
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
                         letterSpacing = 2.sp,
-                        color = primaryColor.copy(alpha = 0.6f)
+                        color = primaryColor.copy(alpha = 0.85f)
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -271,10 +293,10 @@ fun CounterScreen(
                     ) {
                         Text(
                             text = "INTERVAL",
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Medium,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
                             letterSpacing = 1.sp,
-                            color = textMuted
+                            color = textMuted.copy(alpha = 0.9f)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
@@ -286,9 +308,9 @@ fun CounterScreen(
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
                             text = "@${counters.interval}",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = goldColor.copy(alpha = 0.7f)
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = goldColor.copy(alpha = 1f)
                         )
                     }
                 }

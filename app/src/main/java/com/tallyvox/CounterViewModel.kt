@@ -116,6 +116,16 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
                     val amp = intent.getIntExtra("amplitude", 0)
                     _recordingAmplitude.value = amp.toFloat()
                 }
+                "com.tallyvox.ACTION_AUTO_STOP_RECORDING" -> {
+                    // Service auto-stopped after 10s — show confirm dialog
+                    // Call onStopRecording FIRST (it checks _isRecording.value before resetting)
+                    // Then reset _isRecording after
+                    val shown = onStopRecording()
+                    if (!shown) {
+                        _isRecording.value = false
+                        updateVoiceUiState()
+                    }
+                }
             }
         }
     }
@@ -133,6 +143,7 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
             addAction("com.tallyvox.VOICE_LISTENING")
             addAction("com.tallyvox.VOICE_HEARD")
             addAction("com.tallyvox.VOICE_AMPLITUDE")
+            addAction("com.tallyvox.ACTION_AUTO_STOP_RECORDING")
         }
         try {
             @Suppress("UNCHECKED_CAST")
@@ -155,7 +166,8 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
     fun onMicPermissionResult(granted: Boolean) {
         _micPermissionGranted.value = granted
         if (granted) {
-            startListening()
+            // User granted mic permission from RECORD PHRASE tap — start recording
+            onStartRecording()
         }
     }
 
@@ -166,10 +178,11 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
 
         // While confirmation dialog is showing, keep UI in RECORDING state
         // (avoids PHRASE_IDLE flicker before dialog appears on stop)
+        // Also show RECORDING immediately when _isRecording=true (takes priority over phrase check)
         _voiceUiState.value = when {
             _phraseConfirmPending.value -> com.tallyvox.ui.VoiceUiState.RECORDING
-            !phraseRecorded -> com.tallyvox.ui.VoiceUiState.NO_PHRASE
             _isRecording.value -> com.tallyvox.ui.VoiceUiState.RECORDING
+            !phraseRecorded -> com.tallyvox.ui.VoiceUiState.NO_PHRASE
             listening -> com.tallyvox.ui.VoiceUiState.PHRASE_LISTENING
             else -> com.tallyvox.ui.VoiceUiState.PHRASE_IDLE
         }
@@ -258,17 +271,31 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         }
     }
 
+    fun incrementInterval() {
+        setInterval(_counters.value.interval + 1)
+    }
+
+    fun decrementInterval() {
+        if (_counters.value.interval > 1) {
+            setInterval(_counters.value.interval - 1)
+        }
+    }
+
     fun toggleVoiceMode() {
         val newMode = !_counters.value.isVoiceMode
-        _counters.value = _counters.value.copy(isVoiceMode = newMode)
-        saveState()
         if (newMode) {
-            // Switching INTO voice mode — stop old listening, let VoiceModeScreen handle its own flow
+            // Reset SYNCHRONOUSLY before StateFlow update triggers recomposition.
+            // resetVoiceUiState() must run BEFORE VoiceModeScreen reads voiceUiState,
+            // otherwise stale state (e.g. RECORDING/PHRASE_LISTENING) persists.
+            _phraseConfirmPending.value = false
+            _isRecording.value = false
+            resetVoiceUiState()
             stopListening()
         } else {
-            // Switching OUT of voice mode — stop everything
             stopListening()
         }
+        _counters.value = _counters.value.copy(isVoiceMode = newMode)
+        saveState()
     }
 
     fun startListening() {
@@ -394,8 +421,6 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
             return
         }
         _isRecording.value = true
-        // Set placeholder so phraseRecorded=true → after stop, voiceUiState=PHRASE_IDLE → dialog shows
-        _savedPhraseText.value = " "
         updateVoiceUiState()
         // Stop the speech recognizer loop — it runs independently of MediaRecorder
         // and would otherwise keep matching the OLD saved phrase during recording
@@ -424,24 +449,22 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
         // Do NOT call updateVoiceUiState() here — dialog must appear while
         // UI is still in RECORDING state (spec requirement). Keep _phraseConfirmPending
         // to block state transition until user resolves the dialog.
-        var recordingOk = false
+        // Always show the confirm dialog after stopping — even if recording failed
+        // The dialog lets the user type the phrase they said, or re-record
         try {
             val intent = Intent(application, CounterService::class.java).apply {
                 action = "com.tallyvox.ACTION_STOP_RECORDING"
             }
             application.startService(intent)
-            android.util.Log.e("TallyVox", "onStopRecording: service called ok")
-            recordingOk = true
+            android.util.Log.d("TallyVox", "onStopRecording: service called")
         } catch (e: Exception) {
             android.util.Log.e("TallyVox", "onStopRecording: service error ${e.message}")
-            recordingOk = false
         }
-        if (recordingOk) {
-            _phraseConfirmPending.value = true
-            _showPhraseConfirmDialog.value = true
-            android.util.Log.e("TallyVox", "onStopRecording: dialog should show now")
-        }
-        return recordingOk
+        // Always show dialog after stop is attempted — let user re-record if needed
+        _phraseConfirmPending.value = true
+        _showPhraseConfirmDialog.value = true
+        android.util.Log.d("TallyVox", "onStopRecording: dialog shown")
+        return true
     }
 
     fun onSavePhrase(phrase: String) {
@@ -530,6 +553,13 @@ class CounterViewModel(private val application: Application) : AndroidViewModel(
 
     fun dismissDeleteDialog() {
         _showDeleteConfirmDialog.value = false
+    }
+
+    // Called by CounterScreen when entering voice mode — resets voiceUiState to fresh NO_PHRASE
+    // This forces Compose to build VoiceModeScreen from scratch instead of using cached state
+    fun resetVoiceUiState() {
+        val hasPhrase = _savedPhraseText.value.isNotBlank()
+        _voiceUiState.value = if (hasPhrase) com.tallyvox.ui.VoiceUiState.PHRASE_IDLE else com.tallyvox.ui.VoiceUiState.NO_PHRASE
     }
 
     private fun haptic(durationMs: Long) {

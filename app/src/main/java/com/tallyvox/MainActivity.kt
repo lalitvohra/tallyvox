@@ -65,6 +65,13 @@ class MainActivity : ComponentActivity() {
             notifPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
 
+        // Mic permission — request at app start, before voice screen
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            micPermissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
+        } else {
+            viewModel.onMicPermissionResult(true)
+        }
+
         // Register broadcast to receive count updates from notification actions
         val filter = IntentFilter("com.tallyvox.COUNT_UPDATE")
         registerReceiver(countReceiver, filter, RECEIVER_NOT_EXPORTED)
@@ -79,7 +86,7 @@ class MainActivity : ComponentActivity() {
                                 Manifest.permission.RECORD_AUDIO
                             ) == PackageManager.PERMISSION_GRANTED
                         ) {
-                            viewModel.startListening()
+                            viewModel.onStartRecording()
                         } else {
                             micPermissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
                         }

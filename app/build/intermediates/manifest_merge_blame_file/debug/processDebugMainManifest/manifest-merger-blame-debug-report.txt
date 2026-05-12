@@ -2,7 +2,7 @@
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.tallyvox"
 4    android:versionCode="1"
-5    android:versionName="1.0.0" >
+5    android:versionName="1.0.4-voice" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
@@ -14,18 +14,18 @@
 12    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 12-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:5:5-77
 12-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:5:22-74
-13    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-13-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:6:5-77
-13-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:6:22-74
-14    <uses-permission android:name="android.permission.WAKE_LOCK" />
-14-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:5-68
-14-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:22-65
-15    <uses-permission android:name="android.permission.VIBRATE" />
-15-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:8:5-66
-15-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:8:22-63
-16    <uses-permission android:name="android.permission.WAKE_LOCK" />
-16-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:5-68
-16-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:22-65
+13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+13-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:6:5-88
+13-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:6:22-85
+14    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+14-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:5-77
+14-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:22-74
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:8:5-68
+15-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:8:22-65
+16    <uses-permission android:name="android.permission.VIBRATE" />
+16-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:9:5-66
+16-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:9:22-63
 17
 18    <permission
 18-->[androidx.core:core:1.13.1] /home/openclaw/.gradle/caches/transforms-4/11020aafc028db5f5b4c3780b162e5cf/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
@@ -79,13 +79,13 @@
 44        </activity>
 45
 46        <service
-46-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:30:9-33:56
+46-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:30:9-33:58
 47            android:name="com.tallyvox.service.CounterService"
 47-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:31:13-51
 48            android:exported="false"
 48-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:32:13-37
-49            android:foregroundServiceType="dataSync" />
-49-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:33:13-53
+49            android:foregroundServiceType="microphone" />
+49-->/home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:33:13-55
 50
 51        <!-- Counter Widget -->
 52        <receiver

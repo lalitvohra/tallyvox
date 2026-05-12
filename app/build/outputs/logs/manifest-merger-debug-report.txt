@@ -66,18 +66,22 @@ uses-permission#android.permission.FOREGROUND_SERVICE
 ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:5:5-77
 	android:name
 		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:5:22-74
+uses-permission#android.permission.FOREGROUND_SERVICE_MICROPHONE
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:6:5-88
+	android:name
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:6:22-85
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:6:5-77
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:5-77
 	android:name
-		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:6:22-74
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:22-74
 uses-permission#android.permission.WAKE_LOCK
-ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:5-68
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:8:5-68
 	android:name
-		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:7:22-65
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:8:22-65
 uses-permission#android.permission.VIBRATE
-ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:8:5-66
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:9:5-66
 	android:name
-		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:8:22-63
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:9:22-63
 application
 ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:11:5-62:19
 INJECTED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:11:5-62:19
@@ -132,11 +136,11 @@ ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/Andr
 	android:name
 		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:26:27-74
 service#com.tallyvox.service.CounterService
-ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:30:9-33:56
+ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:30:9-33:58
 	android:exported
 		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:32:13-37
 	android:foregroundServiceType
-		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:33:13-53
+		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:33:13-55
 	android:name
 		ADDED from /home/openclaw/.openclaw/workspace/tallyvox_old_bak/app/src/main/AndroidManifest.xml:31:13-51
 receiver#com.tallyvox.CounterWidget

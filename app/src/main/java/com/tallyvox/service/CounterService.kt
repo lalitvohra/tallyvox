@@ -209,6 +209,14 @@ class CounterService : Service() {
             }
             isRecording = true
             amplitudeHandler.post(amplitudeRunnable)
+            // Auto-stop after 10 seconds — broadcast to notify ViewModel
+            mainHandler.removeCallbacksAndMessages(null)
+            mainHandler.postDelayed({
+                android.util.Log.d("TallyVox", "Auto-stop triggered at 10s")
+                stopRecording()
+                // Notify ViewModel that recording auto-stopped
+                sendBroadcast(Intent("com.tallyvox.ACTION_AUTO_STOP_RECORDING"))
+            }, 10000)
             android.util.Log.d("TallyVox", "Recording started: $filePath")
             return true
         } catch (e: Exception) {
@@ -216,6 +224,7 @@ class CounterService : Service() {
             try { mediaRecorder?.release() } catch (_: Exception) {}
             mediaRecorder = null
             isRecording = false
+            android.widget.Toast.makeText(this, "Recording error: ${e.message}", android.widget.Toast.LENGTH_LONG).show()
             return false
         }
     }
@@ -223,6 +232,7 @@ class CounterService : Service() {
     fun stopRecording(): Boolean {
         if (!isRecording) return false
         amplitudeHandler.removeCallbacksAndMessages(null)
+        mainHandler.removeCallbacksAndMessages(null)  // Cancel auto-stop
         try {
             mediaRecorder?.stop()
             mediaRecorder?.release()
@@ -396,7 +406,7 @@ class CounterService : Service() {
         val normSaved = savedPhraseText.lowercase().trim().replace(Regex("[^a-z0-9 ]"), "")
 
         // Skip if no phrase saved (e.g., during re-record placeholder)
-        if (normSaved.isEmpty()) return
+        if (normSaved.isBlank()) return
 
         android.util.Log.d("TallyVox", "phrase match check: spoken='$normSpoken' saved='$normSaved'")
 
